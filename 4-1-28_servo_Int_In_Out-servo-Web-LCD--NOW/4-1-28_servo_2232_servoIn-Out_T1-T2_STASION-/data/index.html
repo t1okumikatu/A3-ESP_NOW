@@ -1,0 +1,41 @@
+<!DOCTYPE HTML><html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="icon" href="data:,">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+ 
+
+</head>
+<body>
+   <h1>STasion_ start_stop</h1>
+   
+  <p>GPIO state: <strong> %STATE%</strong></p>
+  <p><a href="/on"><button class="button">On</button></a></p>
+  <p><a href="/off"><button class="button button2">Off</button></a></p>
+  <p><a href="/temperture"><button class="button button2 button3">volt</button></a></p>
+  <p>
+    <i class="fas fa-battery-half" style="color:#059e8a;"></i> 
+    <span class="dht-labels">Battery</span> 
+    <span id="temperature">%voltage%</span>
+    <sup class="units"> VOLT </sup>
+  </p>
+ </body>
+
+<script>
+setInterval(function ( ) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("temperature").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "/temperature", true);
+  xhttp.send();
+}, 3000 ) ;
+
+
+</script>
+
+</html>
